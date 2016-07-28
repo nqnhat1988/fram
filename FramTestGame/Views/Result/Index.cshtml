@@ -9,14 +9,17 @@
         text-align:center
     }
 </style>
+<h2>Player Results</h2>
 <table>
     <tr>
+        <th class="m_td" style="width:30px">Rank</th>
         <th class="m_td">Player Name</th>
         <th class="m_td">Player Score</th>
     </tr>
     @for (var i = 0; i < Model.Players.Count; i++)
     {
         <tr>
+            <td class="m_td" style="width:30px">@(i + 1)</td>
             <td class="m_td">
                 @Model.Players[@i].Name
             </td>
@@ -26,4 +29,8 @@
         </tr>
     }
 </table>
-
+<br />
+@using (Html.BeginForm("Index", "Home"))
+{
+    <input style="width:100%" type="submit" value="Click to Play Again" />
+}

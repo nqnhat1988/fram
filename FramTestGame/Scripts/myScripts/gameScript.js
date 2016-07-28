@@ -9,7 +9,8 @@ var isMoving = false;
 var currentStep = 1;
 var duration = 300;
 var currentTime = 300;
-
+var minAccept = -1;
+var maxAccept = -1;
 InitDragDrop();
 
 function InitDragDrop() {
@@ -93,20 +94,35 @@ function OnMouseUp(e) {
         var m_table = document.getElementById("m_table");
         var isCollied = overlaps(_dragElement, m_table);
         console.log(isCollied);
-        if (!isCollied || dragId != currentStep) {
+        if (!isCollied || !isAccepted(dragId)) {
             moveObject(_dragElement, e.clientX, e.clientY, _startX, _startY, 300);
         }
         else {
-            m_td.innerText += " " + _dragElement.innerText;
+            var id = _dragElement.id.split("_")[1];
+            if (minAccept == -1 && maxAccept == -1)
+            {
+                minAccept = parseInt(id) - 1;
+                maxAccept = parseInt(id) + 1;
+                m_td.innerText = _dragElement.innerText;
+            }
+            else
+            {
+                if (id == maxAccept) {
+                    maxAccept++;
+                    m_td.innerText = m_td.innerText + " " + _dragElement.innerText;
+                }
+                else {
+                    minAccept--;
+                    m_td.innerText = _dragElement.innerText + " " + m_td.innerText;
+                }
+            }
             _dragElement.style.left = 0;
             _dragElement.style.top = 0;
             _dragElement.parentNode.removeChild(_dragElement);
             currentStep++;
             if (currentStep > 5) {
-                var _score = document.getElementById("_score");
-                _score.setAttribute("value", currentTime);
                 console.log("Game End With Score " + currentTime);
-                window.location.href = '/Game/Win/' + currentTime;
+                window.location.href = '/Game/Win/?Score=' + currentTime;
             }
         }
         // this is how we know we're not dragging      
@@ -116,6 +132,11 @@ function OnMouseUp(e) {
     }
 }
 
+function isAccepted(dragId)
+{
+    if (minAccept == -1 && maxAccept == -1) return true;
+    return (dragId == minAccept || dragId == maxAccept);
+}
 function ExtractNumber(value) {
     var n = parseInt(value);
 

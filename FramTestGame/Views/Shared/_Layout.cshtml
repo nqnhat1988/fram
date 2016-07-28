@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body style="min-width:800px;min-height:600px;width:800px;height:600px;position:relative">
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+
+        <footer style="position:absolute;bottom:0px;width:100%">
+            <hr />
             <p>&copy; @DateTime.Now.Year - My Game</p>
         </footer>
     </div>

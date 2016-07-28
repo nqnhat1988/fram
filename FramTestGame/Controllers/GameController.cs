@@ -18,7 +18,7 @@ namespace FramTestGame.Controllers
         public ActionResult Win(int score)
         {
             Player p = new Player();
-            p.Score = score.ToString();
+            p.Score = score;
             return View(p);
         }
 
@@ -29,7 +29,7 @@ namespace FramTestGame.Controllers
             {
                 Player p = new Player();
                 p.Name = Name;
-                p.Score = Score;
+                p.Score = int.Parse(Score);
                 TempData["player"] = p;
                 return RedirectToAction("Index", "Result");
             }

@@ -21,5 +21,9 @@
       <Name>aaaasd</Name>
       <Score>111</Score>
     </Player>
+    <Player>
+      <Name>dear</Name>
+      <Score>293</Score>
+    </Player>
   </Players>
 </PlayerCollection>

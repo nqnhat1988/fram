@@ -21,6 +21,7 @@ namespace FramTestGame.Controllers
                 pc.Save(filename);
                 TempData["player"] = null;
             }
+            pc.Players = pc.Players.OrderByDescending(m => m.Score).ToList();
             return View(pc);
         }
     }

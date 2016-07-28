@@ -8,6 +8,6 @@
     {
         [Required]
         public string Name;
-        public string Score;
+        public int Score;
     }
 }
