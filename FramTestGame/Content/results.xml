@@ -1,29 +1,4 @@
 <?xml version="1.0"?>
 <PlayerCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Players>
-    <Player>
-      <Name>a1</Name>
-      <Score>11</Score>
-    </Player>
-    <Player>
-      <Name>a2</Name>
-      <Score>111</Score>
-    </Player>
-    <Player>
-      <Name>a3</Name>
-      <Score>1122</Score>
-    </Player>
-    <Player>
-      <Name>aaa</Name>
-      <Score>111</Score>
-    </Player>
-    <Player>
-      <Name>aaaasd</Name>
-      <Score>111</Score>
-    </Player>
-    <Player>
-      <Name>dear</Name>
-      <Score>293</Score>
-    </Player>
-  </Players>
+
 </PlayerCollection>
