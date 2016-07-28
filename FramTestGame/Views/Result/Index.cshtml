@@ -1,0 +1,29 @@
+﻿@model FramTestGame.Models.PlayerContainer
+@{
+    ViewBag.Title = "Results";
+}
+<style>
+    .m_td{
+        width:200px;
+        border-style:solid;
+        text-align:center
+    }
+</style>
+<table>
+    <tr>
+        <th class="m_td">Player Name</th>
+        <th class="m_td">Player Score</th>
+    </tr>
+    @for (var i = 0; i < Model.Players.Count; i++)
+    {
+        <tr>
+            <td class="m_td">
+                @Model.Players[@i].Name
+            </td>
+            <td class="m_td">
+                @Model.Players[@i].Score
+            </td>
+        </tr>
+    }
+</table>
+

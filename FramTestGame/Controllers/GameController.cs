@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FramTestGame.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,9 +15,28 @@ namespace FramTestGame.Controllers
             return View();
         }
 
-        public ActionResult Win()
+        public ActionResult Win(int score)
         {
-            return View();
+            Player p = new Player();
+            p.Score = score.ToString();
+            return View(p);
+        }
+
+        [HttpPost]
+        public ActionResult SavePlayer(String Name,String Score)
+        {
+            if (ModelState.IsValid)
+            {
+                Player p = new Player();
+                p.Name = Name;
+                p.Score = Score;
+                TempData["player"] = p;
+                return RedirectToAction("Index", "Result");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

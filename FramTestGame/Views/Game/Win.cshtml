@@ -1,7 +1,23 @@
-﻿
+﻿@model FramTestGame.Models.Player
 @{
     ViewBag.Title = "Win";
 }
 
-<h2>Win</h2>
-
+@using (Html.BeginForm("SavePlayer", "Game"))
+{
+    <table>
+        <tr>
+            <td style="padding-right: 20px;">@Html.Label("Name")</td>
+            <td >@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Score")</td>
+            <td>@Html.DisplayFor(m=>m.Score)</td>
+            @Html.HiddenFor(m=>m.Score)
+        </tr>
+        <tr>
+            <td></td>
+            <td><input style="width:100%" type="submit" value="Save Player" /></td>
+        </tr>
+    </table>
+}

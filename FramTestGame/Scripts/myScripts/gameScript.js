@@ -7,6 +7,8 @@ var _oldZIndex = 0;         // we temporarily increase the z-index during drag
 var _debug = $('debug');    // makes life easier
 var isMoving = false;
 var currentStep = 1;
+var duration = 300;
+var currentTime = 300;
 
 InitDragDrop();
 
@@ -101,7 +103,10 @@ function OnMouseUp(e) {
             _dragElement.parentNode.removeChild(_dragElement);
             currentStep++;
             if (currentStep > 5) {
-                document.getElementById("myWinForm").submit();
+                var _score = document.getElementById("_score");
+                _score.setAttribute("value", currentTime);
+                console.log("Game End With Score " + currentTime);
+                window.location.href = '/Game/Win/' + currentTime;
             }
         }
         // this is how we know we're not dragging      
@@ -207,24 +212,25 @@ var overlapsByPos = (function () {
 })();
 
 function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
+    currentTime = duration;
+    var minutes, seconds;   
     var m_timer = setInterval(function () {
-        minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
+        minutes = parseInt(currentTime / 60, 10)
+        seconds = parseInt(currentTime % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
         display.textContent = minutes + ":" + seconds;
 
-        if (--timer < 0) {
-            timer = duration;
+        if (--currentTime < 0) {
+            window.location.href = '/Home/Index';
         }
     }, 1000);
 }
 
 window.onload = function () {
-    var fiveMinutes = 60 * 5,
+    var fiveMinutes = duration,
         display = document.querySelector('#time');
     startTimer(fiveMinutes, display);
     randomPosition();
