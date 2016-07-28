@@ -1,0 +1,70 @@
+﻿@{
+	Layout = "";
+}
+@{
+	ViewBag.Title = "Home";
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+		#div1 {
+			width: 350px;
+			height: 70px;
+			padding: 10px;
+			border: 1px solid #aaaaaa;
+		}
+
+		.drag {
+			position: relative;
+			height: 25px;
+			width: 50px;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 25px;
+			font-family: fantasy;
+		}
+	</style>
+
+</head>
+<body>
+	@using (Html.BeginForm("Win", "Game", FormMethod.Post, new { id = "myWinForm" }))
+	{
+
+	}
+	<div style="position: relative;
+
+				width: 800px;
+	            height: 600px;
+	            border: 1px solid black;">
+		<div id="time" style="text-align: center">05:00</div>
+		<pre id="debug" style="display:none">NON-draggable element clicked</pre>
+		<div id="drag_5" class="drag">flow</div>
+		<div id="drag_4" class="drag">the</div>
+		<div id="drag_3" class="drag">about</div>
+		<div id="drag_2" class="drag">all</div>
+		<div id="drag_1" class="drag">It's</div>
+		<div style="position: absolute;
+	                bottom: 0;
+	                width: 100%;
+	                height: 100px;
+	                ">
+
+			<table id="m_table" style="margin-left:auto;margin-right:auto;border-bottom: azure;border-bottom-style: groove;width:300px;height: 50px">
+				<tr>
+					<td id="m_td" style="font-size:25px;font-family: fantasy;text-align: center;" width="50px" height="25px"></td>
+				</tr>
+			</table>
+			<br>
+			<div style="text-align: center">
+				Form the phase "It's all about the flow" on the line above
+			</div>
+		</div>
+	</div>
+</body>
+
+@Scripts.Render("~/Scripts/myScripts/gameScript.js")
+</html>
+
+
