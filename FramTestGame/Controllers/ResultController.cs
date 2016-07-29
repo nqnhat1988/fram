@@ -24,5 +24,13 @@ namespace FramTestGame.Controllers
             pc.Players = pc.Players.OrderByDescending(m => m.Score).ToList();
             return View(pc);
         }
+
+        public ActionResult ClearResult()
+        {
+            String filename = Server.MapPath("~/Content/results.xml");
+            PlayerContainer pc = new PlayerContainer();
+            pc.Save(filename);
+            return RedirectToAction("Index");
+        }
     }
 }
