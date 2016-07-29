@@ -1,4 +1,5 @@
-﻿@{
+﻿@model FramTestGame.Models.Player
+@{
 	Layout = "";
 }
 @{
@@ -29,6 +30,15 @@
 
 </head>
 <body>
+    @using (Html.BeginForm("Win", "Game", FormMethod.Post, new { id = "myWinForm" }))
+    {
+        @Html.HiddenFor(m => m.Score, new { id = "myhidden" } )
+    }
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "myResetForm" }))
+    {
+
+    }
 	<div style="position: relative;
 
 				width: 800px;

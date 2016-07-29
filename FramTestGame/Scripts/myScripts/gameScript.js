@@ -121,8 +121,11 @@ function OnMouseUp(e) {
             _dragElement.parentNode.removeChild(_dragElement);
             currentStep++;
             if (currentStep > 5) {
+                var mHidden = document.getElementById("myhidden");
+                mHidden.setAttribute("value", currentTime);
+                var myForm = document.getElementById("myWinForm");
+                myForm.submit();
                 console.log("Game End With Score " + currentTime);
-                window.location.href = '/Game/Win/?Score=' + currentTime;
             }
         }
         // this is how we know we're not dragging      
@@ -245,7 +248,8 @@ function startTimer(duration, display) {
         display.textContent = minutes + ":" + seconds;
 
         if (--currentTime < 0) {
-            window.location.href = '/Home/Index';
+            var myForm = document.getElementById("myResetForm");
+            myForm.submit();
         }
     }, 1000);
 }
